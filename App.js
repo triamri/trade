@@ -1,37 +1,86 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput,
+  Button,
+  Alert
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
 export default class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      daftarKontak: [],
+      id: null,
+      nama: null,
+      nomor: null
+    }
+  }
+
+  componentWillMount = () => {
+    axios.get('http://156.67.214.64/api/index.php/kontak')
+    .then(({ data }) => {
+      this.setState({
+        daftarKontak: data 
+      });
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  handleSubmit = () => {
+    let kontak = {
+      id: this.state.id,
+      nama: this.state.nama,
+      nomor: this.state.nomor
+    }
+    // Alert.alert('test');
+    axios.post('http://156.67.214.64/api/index.php/kontak', kontak)
+    .then(({ data }) => {
+      console.log(data);
+    })
+    .catch(err => console.log(err))
+  }
+  
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
+      { this.state.daftarKontak.map((kontak, index) =>
+        <Text style={styles.welcome} key={ index }>
+          { kontak.nama }
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      )}
+      <TextInput
+        style={{
+          padding: 10,
+          paddingTop: 50,
+        }}
+        onChangeText={id => this.setState({id})}
+      />
+      <TextInput
+        style={{
+          padding: 10,
+          paddingTop: 50,
+        }}
+        onChangeText={nama => this.setState({nama})}
+      />
+      <TextInput
+        style={{
+          padding: 10,
+          paddingTop: 50,
+        }}
+        onChangeText={nomor => this.setState({nomor})}
+      />
+      <Button
+        onPress={this.handleSubmit}
+        title="submit"
+      />
       </View>
     );
   }
