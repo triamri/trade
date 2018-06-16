@@ -1,106 +1,91 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-  Alert
-} from 'react-native';
+import { StackNavigator } from 'react-navigation'; 
 
+//profil
+import Home from './screen/Home';
+import Profil from './screen/Profil';
+import Struktur from './screen/Struktur';
+import Visi from './screen/Visi';
+import Kontak from './screen/Kontak';
+
+//media
+import Berita from './screen/Berita';
+import DetailBerita from './screen/DetailBerita';
+import Agenda from './screen/Agenda';
+import DetailAgenda from './screen/DetailAgenda';
+import Video from './screen/Video';
+import DetailVideo from './screen/DetailVideo';
+import Dokumentasi from './screen/Dokumentasi';
+
+//ikm
+import Ikm from './screen/Ikm';
+import DetailIkm from './screen/DetailIkm';
+import Produk from './screen/Produk';
+import DetailProduk from './screen/DetailProduk';
+import Register from './screen/Register';
+
+const NavTrade = StackNavigator({
+  Home: {
+    screen: Home
+  },
+  Profil: {
+    screen: Profil
+  },
+  Visi: {
+    screen: Visi
+  },
+  Struktur: {
+    screen: Struktur
+  },
+  Kontak: {
+    screen: Kontak
+  },
+  Berita: {
+    screen: Berita
+  },
+  DetailBerita: {
+    screen: DetailBerita
+  },
+  Agenda: {
+    screen: Agenda
+  },
+  DetailAgenda: {
+    screen: DetailAgenda
+  },
+  Video: {
+    screen: Video
+  },
+  DetailVideo: {
+    screen: DetailVideo
+  },
+  Ikm: {
+    screen: Ikm
+  },
+  DetailIkm: {
+    screen: DetailIkm
+  },
+  Produk: {
+    screen: Produk
+  },
+  DetailProduk: {
+    screen: DetailProduk
+  },
+  Dokumentasi: {
+    screen: Dokumentasi
+  },
+  Register: {
+    screen: Register
+  }
+}, {
+  headerMode: 'none',
+  initialRouteName: 'Home'
+})
 
 export default class App extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      daftarKontak: [],
-      id: null,
-      nama: null,
-      nomor: null
-    }
-  }
-
-  componentWillMount = () => {
-    axios.get('http://156.67.214.64/api/index.php/kontak')
-    .then(({ data }) => {
-      this.setState({
-        daftarKontak: data 
-      });
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
-
-  handleSubmit = () => {
-    let kontak = {
-      id: this.state.id,
-      nama: this.state.nama,
-      nomor: this.state.nomor
-    }
-    // Alert.alert('test');
-    axios.post('http://156.67.214.64/api/index.php/kontak', kontak)
-    .then(({ data }) => {
-      console.log(data);
-    })
-    .catch(err => console.log(err))
-  }
   
   render() {
     return (
-      <View style={styles.container}>
-      { this.state.daftarKontak.map((kontak, index) =>
-        <Text style={styles.welcome} key={ index }>
-          { kontak.nama }
-        </Text>
-      )}
-      <TextInput
-        style={{
-          padding: 10,
-          paddingTop: 50,
-        }}
-        onChangeText={id => this.setState({id})}
-      />
-      <TextInput
-        style={{
-          padding: 10,
-          paddingTop: 50,
-        }}
-        onChangeText={nama => this.setState({nama})}
-      />
-      <TextInput
-        style={{
-          padding: 10,
-          paddingTop: 50,
-        }}
-        onChangeText={nomor => this.setState({nomor})}
-      />
-      <Button
-        onPress={this.handleSubmit}
-        title="submit"
-      />
-      </View>
+        <NavTrade />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
