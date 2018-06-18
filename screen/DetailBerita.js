@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { ScrollView, Dimensions } from 'react-native';
+import axios from 'axios';
 import { 
   Container, 
   Header, 
   Left,
   Body,
+  H2,
   Content,
   Thumbnail,
   Right,
@@ -18,15 +20,31 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class DetailBerita extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state={
+      id: null,
+      judul: null,
+      img: null,
+      isi: null
+    }
+  }
+
+  componentWillMount = () => {
+    axios.get(`http://156.67.214.64/api/index.php/berita?id=${this.props.navigation.state.params.id}`)
+    .then(({data}) => {
+      this.setState({
+        id: data[0].id,
+        judul: data[0].judul,
+        img: data[0].img,
+        isi: data[0].isi
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
   render() {
-    
-    const htmlContent = `
-      <h1>This HTML snippet is now rendered with native components !</h1>
-      <h2>Enjoy a webview-free and blazing fast application</h2>
-      <img src="https://i.imgur.com/dHLmxfO.jpg?2" />
-      <em style="textAlign: center;">Look at how happy this native cat is</em>
-    `;
-    
+       
     const { goBack } = this.props.navigation;
     
     return (
@@ -43,7 +61,7 @@ export default class DetailBerita extends Component {
                 >Detail Berita</Text>
             </Body>
         </Header>
-        <Content>
+        <Content style={{ backgroundColor: 'white' }}>
         <Grid>
           <Col style={{
             width: '100%', 
@@ -53,8 +71,9 @@ export default class DetailBerita extends Component {
           </Col>
         </Grid>
         </Content>
-        <ScrollView style={{ flex: 1, padding: 10 }}>
-          <HTML html={htmlContent} imagesMaxWidth={Dimensions.get('window').width} />
+        <ScrollView style={{ backgroundColor: 'white', flex: 1, padding: 10 }}>
+          <H2>{ this.state.judul }</H2>
+          <HTML html={ this.state.isi } imagesMaxWidth={Dimensions.get('window').width} />
         </ScrollView>
     </Container>
     );

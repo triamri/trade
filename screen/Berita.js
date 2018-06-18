@@ -7,6 +7,7 @@ import {
   Left,
   Body,
   Content,
+  H2,
   Card, 
   CardItem,
   Thumbnail,
@@ -21,15 +22,25 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class Berita extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      dataBerita: []
+    }
+  }
+
+  componentWillMount = () => {
+    axios.get('http://156.67.214.64/api/index.php/berita')
+    .then(({ data }) => {
+      this.setState({
+        dataBerita: data
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
   render() {
-    
-    const htmlContent = `
-      <h1>judul</h1>
-      <p>This HTML snippet is now rendered with native components !
-      Enjoy a webview-free and blazing fast application
-      <em style="textAlign: center;">Look at how happy this native cat is</em></p>
-    `;
-    
+        
     const { goBack, navigate } = this.props.navigation;
     
     return (
@@ -46,20 +57,25 @@ export default class Berita extends Component {
                 >Berita</Text>
             </Body>
         </Header>
-        <Content>
-          <Card style={{flex: 0}}>
-            <CardItem>
-                <Body>
-                    <HTML html={htmlContent} />
-                    <Button transparent 
-                        textStyle={{color: '#87838B'}}
-                        onPress= { () => navigate('DetailBerita')}
-                    >
-                        <Text>Selengkapnya..</Text>
-                    </Button>
-                </Body>
-            </CardItem>
+        <Content style={{ backgroundColor: 'white' }}>
+
+          { this.state.dataBerita.map((berita, index) =>
+          <Card style={{flex: 0}} key={ index }>
+          <CardItem>
+              <Body>
+                  <H2>{ berita.judul }</H2>
+                  <HTML html={ berita.isi } />
+                  <Button transparent 
+                      textStyle={{color: '#87838B'}}
+                      onPress= { () => navigate('DetailBerita', { id: berita.id })}
+                  >
+                      <Text>Selengkapnya..</Text>
+                  </Button>
+              </Body>
+          </CardItem>
           </Card>
+
+          ) }
         </Content>
     </Container>
     );

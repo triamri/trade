@@ -37,7 +37,7 @@ export default class Register extends Component {
                 >Register</Text>
             </Body>
         </Header>
-        <Content style={{ margin:10 }}>
+        <Content style={{backgroundColor: 'white', margin:10 }}>
           <Item floatingLabel>
             <Label>Nama Lengkap</Label>
             <Input />
