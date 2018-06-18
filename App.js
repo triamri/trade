@@ -1,57 +1,91 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { StackNavigator } from 'react-navigation'; 
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+//profil
+import Home from './screen/Home';
+import Profil from './screen/Profil';
+import Struktur from './screen/Struktur';
+import Visi from './screen/Visi';
+import Kontak from './screen/Kontak';
+
+//media
+import Berita from './screen/Berita';
+import DetailBerita from './screen/DetailBerita';
+import Agenda from './screen/Agenda';
+import DetailAgenda from './screen/DetailAgenda';
+import Video from './screen/Video';
+import DetailVideo from './screen/DetailVideo';
+import Dokumentasi from './screen/Dokumentasi';
+
+//ikm
+import Ikm from './screen/Ikm';
+import DetailIkm from './screen/DetailIkm';
+import Produk from './screen/Produk';
+import DetailProduk from './screen/DetailProduk';
+import Register from './screen/Register';
+
+const NavTrade = StackNavigator({
+  Home: {
+    screen: Home
+  },
+  Profil: {
+    screen: Profil
+  },
+  Visi: {
+    screen: Visi
+  },
+  Struktur: {
+    screen: Struktur
+  },
+  Kontak: {
+    screen: Kontak
+  },
+  Berita: {
+    screen: Berita
+  },
+  DetailBerita: {
+    screen: DetailBerita
+  },
+  Agenda: {
+    screen: Agenda
+  },
+  DetailAgenda: {
+    screen: DetailAgenda
+  },
+  Video: {
+    screen: Video
+  },
+  DetailVideo: {
+    screen: DetailVideo
+  },
+  Ikm: {
+    screen: Ikm
+  },
+  DetailIkm: {
+    screen: DetailIkm
+  },
+  Produk: {
+    screen: Produk
+  },
+  DetailProduk: {
+    screen: DetailProduk
+  },
+  Dokumentasi: {
+    screen: Dokumentasi
+  },
+  Register: {
+    screen: Register
+  }
+}, {
+  headerMode: 'none',
+  initialRouteName: 'Home'
+})
 
 export default class App extends Component {
+  
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+        <NavTrade />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
