@@ -26,7 +26,7 @@ export default class Profil extends Component {
       nama: null,
       tag: null,
       img: null,
-      isi: null
+      isi: '<p>Loading</p>'
     }
   }
 
@@ -66,9 +66,13 @@ export default class Profil extends Component {
         <Grid>
           <Col style={{
             width: '100%', 
-            height: 250 
+            height: 250,
+            alignItems: 'center'
           }}>
-            <Thumbnail square style={{ width: '100%', height: '100%' }} source={{uri: 'http://www.journalpolice.id/wp-content/uploads/2017/12/IMG-20171213-WA0000.jpg'}} />
+            <Thumbnail square 
+              style={{ width: '70%', height: '100%' }} 
+              source={ require('../img/logodoangori.png') }
+            />
           </Col>
         </Grid>
         </Content>

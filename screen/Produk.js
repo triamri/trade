@@ -24,7 +24,7 @@ export default class Produk extends Component {
   }
 
   componentWillMount = () => {
-    axios.get('http://156.67.214.64/api/index.php/produk')
+    axios.get('http://156.67.214.64/api/index.php/kategori')
     .then(({ data }) => {
       this.setState({
         dataProduk: data
@@ -60,14 +60,14 @@ export default class Produk extends Component {
             justifyContent: 'flex-start',
             alignItems: 'center' 
             }}>
-            { this.state.dataProduk.map((produk, index) =>
-            <View style={{margin: 5,height: 170, width: '47%', justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
-            <Thumbnail square style={{ width: '100%', height: '70%' }} source={{uri: 'http://www.journalpolice.id/wp-content/uploads/2017/12/IMG-20171213-WA0000.jpg'}} />
+            { this.state.dataProduk.map((kategori, index) =>
+            <View key={ kategori.id } style={{margin: 5,height: 170, width: '47%', justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
+            <Thumbnail square style={{ width: '100%', height: '70%' }} source={{uri: `http://156.67.214.64/trade/kategori/${kategori.file}`}} />
             <Text 
               style={{color: 'white', fontSize: 24, fontWeight: 'bold', marginTop: 10}}
-              onPress= { () => navigate('DetailProduk', { id:produk.id }) }  
+              onPress= { () => navigate('KategoriProduk', { id:kategori.id, kategori:kategori.kategori  }) }  
             >
-            { produk.produk }
+            { kategori.kategori }
             </Text>
             </View>
             )}

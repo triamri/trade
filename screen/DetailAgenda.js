@@ -27,7 +27,7 @@ export default class DetailAgenda extends Component {
       agenda: null,
       img: null,
       tgl: null,
-      isi: null
+      isi: '<p>Loading</p>'
     }
   }
 
@@ -69,7 +69,7 @@ export default class DetailAgenda extends Component {
             width: '100%', 
             height: 250 
           }}>
-            <Thumbnail square style={{ width: '100%', height: '100%' }} source={{uri: 'http://www.journalpolice.id/wp-content/uploads/2017/12/IMG-20171213-WA0000.jpg'}} />
+            <Thumbnail square style={{ width: '100%', height: '100%' }} source={{uri: `http://156.67.214.64/trade/agenda/${this.state.img}`}} />
           </Col>
         </Grid>
         </Content>

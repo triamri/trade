@@ -57,7 +57,7 @@ export default class Video extends Component {
         </Header>
         <Content style={{ backgroundColor: 'white' }}>
         { this.state.dataVideo.map((video, index) =>
-          <Card style={{flex: 0}}>
+          <Card key={ index } style={{flex: 0}}>
             <CardItem>
                 <Body>
                 <Text 
