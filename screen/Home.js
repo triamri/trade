@@ -31,6 +31,9 @@ export default class Home extends Component {
     };
 
   render() {
+
+    const { navigate } = this.props.navigation;
+
     return (
     <Drawer
     ref={(ref) => { this.drawer = ref; }}
@@ -45,7 +48,7 @@ export default class Home extends Component {
             </Left>
             <Body></Body>
         </Header>
-        <Content style={{ backgroundColor: '#f0d3d3' }}>
+        <Content style={{ backgroundColor: 'white' }} >
         <Grid style={{ alignSelf: 'center' }}>
         <Col style={{
             width: '100%', 
@@ -59,19 +62,31 @@ export default class Home extends Component {
         </Col>
         </Grid>
         <Grid style={{ marginTop: 5 }}>
-            <Col style={{ margin: 5, height: 100, alignItems: 'center' }}>
+            <Col 
+            style={{ margin: 5, height: 100, alignItems: 'center' }}
+            onPress = { () => navigate('Profil') }
+            >
                 <Thumbnail large source={{uri: 'http://icons.iconarchive.com/icons/blackvariant/button-ui-system-folders-alt/512/Users-icon.png'}} />
                 <Text style={{ fontSize: 10 }}>Profil</Text>
             </Col>
-            <Col style={{ margin: 5, height: 100, alignItems: 'center' }}>
+            <Col 
+            style={{ margin: 5, height: 100, alignItems: 'center' }}
+            onPress = { () => navigate('Ikm') }
+            >
                 <Thumbnail large source={{uri: 'http://icons.iconarchive.com/icons/blackvariant/button-ui-system-folders-alt/512/Group-icon.png'}} />
-                <Text style={{ fontSize: 10 }}>UMKM</Text>
+                <Text style={{ fontSize: 10 }}>IKM</Text>
             </Col>
-            <Col style={{ margin: 5, height: 100, alignItems: 'center' }}>
+            <Col 
+            style={{ margin: 5, height: 100, alignItems: 'center' }}
+            onPress = { () => navigate('Berita') }
+            >
                 <Thumbnail large source={{uri: 'http://icons.iconarchive.com/icons/blackvariant/button-ui-system-folders-alt/512/Desktop-icon.png'}} />
                 <Text style={{ fontSize: 10 }}>Berita</Text>
             </Col>
-            <Col style={{ margin: 5, height: 100, alignItems: 'center' }}>
+            <Col 
+            style={{ margin: 5, height: 100, alignItems: 'center' }}
+            onPress = { () => navigate('Register') }
+            >
                 <Thumbnail large source={{uri: 'http://icons.iconarchive.com/icons/blackvariant/button-ui-system-folders-alt/512/Documents-icon.png'}} />
                 <Text style={{ fontSize: 10 }}>Register</Text>
             </Col>
@@ -82,22 +97,22 @@ export default class Home extends Component {
         <CardSilder style={{ marginTop: 5 }}>
             <View style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
             <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                悉尼
+                IKM 1
             </Text>
             </View>
             <View style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'lightsalmon'}}>
             <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                纽约
+                IKM 2
             </Text>
             </View>
             <View style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'teal'}}>
             <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                东京
+                IKM 3
             </Text>
             </View>
             <View style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'lightpink'}}>
             <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                上海
+                IKM 4
             </Text>
             </View>
             </CardSilder>
@@ -114,22 +129,22 @@ export default class Home extends Component {
             }}>
             <View style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
             <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                悉尼
+                Produk 1
             </Text>
             </View>
             <View style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'lightsalmon'}}>
             <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                纽约
+                Produk 2
             </Text>
             </View>
             <View style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'teal'}}>
             <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                东京
+                Produk 3
             </Text>
             </View>
             <View style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'lightpink'}}>
             <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                上海
+                Produk 4
             </Text>
             </View>
         </Grid>            

@@ -43,7 +43,7 @@ export default class Kontak extends Component {
                 >Kontak</Text>
             </Body>
         </Header>
-        <Content>
+        <Content style={{ backgroundColor: 'white' }}>
         <Grid>
           <Col style={{
             width: '100%', 
@@ -53,7 +53,7 @@ export default class Kontak extends Component {
           </Col>
         </Grid>
         </Content>
-        <ScrollView style={{ flex: 1, padding: 10 }}>
+        <ScrollView style={{ backgroundColor: 'white', flex: 1, padding: 10 }}>
           <HTML html={htmlContent} imagesMaxWidth={Dimensions.get('window').width} />
         </ScrollView>
     </Container>

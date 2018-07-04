@@ -9,6 +9,7 @@ import Visi from './screen/Visi';
 import Kontak from './screen/Kontak';
 
 //media
+import SplashScreen from './screen/SplashScreen';
 import Berita from './screen/Berita';
 import DetailBerita from './screen/DetailBerita';
 import Agenda from './screen/Agenda';
@@ -25,6 +26,9 @@ import DetailProduk from './screen/DetailProduk';
 import Register from './screen/Register';
 
 const NavTrade = StackNavigator({
+  SplashScreen: {
+    screen: SplashScreen
+  },
   Home: {
     screen: Home
   },
@@ -78,7 +82,7 @@ const NavTrade = StackNavigator({
   }
 }, {
   headerMode: 'none',
-  initialRouteName: 'Home'
+  initialRouteName: 'SplashScreen'
 })
 
 export default class App extends Component {

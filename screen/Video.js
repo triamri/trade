@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { 
   Container, 
   Header, 
@@ -19,6 +20,23 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class Video extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      dataVideo: []
+    }
+  }
+
+  componentWillMount = () => {
+    axios.get('http://156.67.214.64/api/index.php/video')
+    .then(({ data }) => {
+      this.setState({
+        dataVideo: data
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
   render() {
     
     const { goBack, navigate } = this.props.navigation;
@@ -37,37 +55,19 @@ export default class Video extends Component {
                 >Video</Text>
             </Body>
         </Header>
-        <Content>
+        <Content style={{ backgroundColor: 'white' }}>
+        { this.state.dataVideo.map((video, index) =>
           <Card style={{flex: 0}}>
             <CardItem>
                 <Body>
                 <Text 
                   style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}
-                  onPress= { () => navigate('DetailVideo')}
-                >Video</Text>
+                  onPress= { () => navigate('DetailVideo', { id:video.id })}
+                > { video.nama }</Text>
                 </Body>
             </CardItem>
           </Card>
-          <Card style={{flex: 0}}>
-            <CardItem>
-                <Body>
-                <Text 
-                  style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}
-                  onPress= { () => navigate('DetailVideo')}
-                >Detail Video</Text>
-                </Body>
-            </CardItem>
-          </Card>
-          <Card style={{flex: 0}}>
-            <CardItem>
-                <Body>
-                <Text 
-                  style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}
-                  onPress= { () => navigate('DetailAgenda')}
-                >Detail Video</Text>
-                </Body>
-            </CardItem>
-          </Card>
+        )}
         </Content>
     </Container>
     );

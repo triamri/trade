@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Image } from 'react-native';
 import { 
   Container, 
@@ -16,6 +17,24 @@ import {
 } from 'native-base';
 
 export default class Ikm extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      dataIkm: []
+    }
+  }
+
+  componentWillMount = () => {
+    axios.get('http://156.67.214.64/api/index.php/ikm')
+    .then(({ data }) => {
+      this.setState({
+        dataIkm: data
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
   render() {
 
     const { goBack, navigate } = this.props.navigation;
@@ -34,19 +53,21 @@ export default class Ikm extends Component {
                 >Ikm</Text>
             </Body>
         </Header>
-        <Content>
+        <Content style={{ backgroundColor: 'white' }}>
+        { this.state.dataIkm.map((ikm, index) =>
           <Card>
             <CardItem>
               <Left>
                 <Thumbnail source={{uri: 'https://i.imgur.com/dHLmxfO.jpg?2'}} />
                 <Body>
                   <Text 
-                    onPress= { () => navigate('DetailIkm')}
-                    >NativeBase</Text>
+                    onPress= { () => navigate('DetailIkm', { id: ikm.id })}
+                    >{ ikm.ikm }</Text>
                 </Body>
               </Left>
             </CardItem>
           </Card>
+        ) }
         </Content>
       </Container>
     );

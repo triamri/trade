@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { 
   Container, 
   Header, 
@@ -19,6 +20,23 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class Agenda extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      dataAgenda: []
+    }
+  }
+
+  componentWillMount = () => {
+    axios.get('http://156.67.214.64/api/index.php/agenda')
+    .then(({ data }) => {
+      this.setState({
+        dataAgenda: data
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
   render() {
     
     const { goBack, navigate } = this.props.navigation;
@@ -37,37 +55,20 @@ export default class Agenda extends Component {
                 >Agenda</Text>
             </Body>
         </Header>
-        <Content>
+        <Content style={{ backgroundColor: 'white' }}>
+        { this.state.dataAgenda.map((agenda, index) =>
           <Card style={{flex: 0}}>
             <CardItem>
                 <Body>
                 <Text 
                   style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}
-                  onPress= { () => navigate('DetailAgenda')}
-                >Agenda Data</Text>
+                  onPress= { () => navigate('DetailAgenda', { id: agenda.id })}
+                >{ agenda.agenda }</Text>
+                <Text note>{ agenda.tgl }</Text>
                 </Body>
             </CardItem>
           </Card>
-          <Card style={{flex: 0}}>
-            <CardItem>
-                <Body>
-                <Text 
-                  style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}
-                  onPress= { () => navigate('DetailAgenda')}
-                >Agenda Data</Text>
-                </Body>
-            </CardItem>
-          </Card>
-          <Card style={{flex: 0}}>
-            <CardItem>
-                <Body>
-                <Text 
-                  style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}
-                  onPress= { () => navigate('DetailAgenda')}
-                >Agenda Data</Text>
-                </Body>
-            </CardItem>
-          </Card>
+         ) }
         </Content>
     </Container>
     );

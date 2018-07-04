@@ -33,7 +33,7 @@ export default class Dokumentasi extends Component {
                 >Produk</Text>
             </Body>
         </Header>
-        <Content>
+        <Content style={{ backgroundColor: 'white' }}>
         <Grid style={{ 
             marginTop: 5, 
             flex: 1,

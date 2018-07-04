@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { ScrollView, Dimensions } from 'react-native';
 import { 
   Container, 
   Header, 
   Left,
   Body,
+  H2,
   Content,
   Thumbnail,
   Right,
   Button,
   Icon,
-  Text
+  Text,
+  Tab, 
+  Tabs, 
+  ScrollableTab
 } from 'native-base';
 
 import HTML from 'react-native-render-html';
@@ -18,15 +23,37 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class DetailIkm extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state={
+      id: null,
+      ikm: null,
+      alamat: null,
+      kontak: null,
+      email: null,
+      img: null,
+      desc: null
+    }
+  }
+
+  componentWillMount = () => {
+    axios.get(`http://156.67.214.64/api/index.php/ikm?id=${this.props.navigation.state.params.id}`)
+    .then(({data}) => {
+      this.setState({
+        id: data[0].id,
+        ikm: data[0].ikm,
+        alamat: data[0].alamat,
+        kontak: data[0].kontak,
+        email: data[0].email,
+        img: data[0].img,
+        desc: data[0].deskripsi
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
   render() {
-    
-    const htmlContent = `
-      <h1>This HTML snippet is now rendered with native components !</h1>
-      <h2>Enjoy a webview-free and blazing fast application</h2>
-      <img src="https://i.imgur.com/dHLmxfO.jpg?2" />
-      <em style="textAlign: center;">Look at how happy this native cat is</em>
-    `;
-    
+
     const { goBack } = this.props.navigation;
     
     return (
@@ -43,7 +70,7 @@ export default class DetailIkm extends Component {
                 >Detail IKM</Text>
             </Body>
         </Header>
-        <Content>
+        <Content style={{ backgroundColor: 'white' }}>
         <Grid>
           <Col style={{
             width: '100%', 
@@ -53,9 +80,19 @@ export default class DetailIkm extends Component {
           </Col>
         </Grid>
         </Content>
-        <ScrollView style={{ flex: 1, padding: 10 }}>
-          <HTML html={htmlContent} imagesMaxWidth={Dimensions.get('window').width} />
-        </ScrollView>
+        <Tabs style={{ marginTop: -50 }} renderTabBar={()=> <ScrollableTab />}>
+          <Tab style={{ padding: 10 }} heading="Profil">
+            <Text>{ this.state.ikm }</Text>
+            <Text>{ this.state.alamat }</Text>
+            <Text>{ this.state.kontak }</Text>
+            <Text>{ this.state.email }</Text>
+          </Tab>
+          <Tab style={{ padding: 10 }} heading="Deskripsi">
+            <ScrollView style={{ backgroundColor: 'white', flex: 1, padding: 10 }}>
+              <HTML html={ this.state.desc } imagesMaxWidth={Dimensions.get('window').width} />
+            </ScrollView>
+          </Tab>
+        </Tabs>
     </Container>
     );
   }

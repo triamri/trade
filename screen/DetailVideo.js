@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { ScrollView, Dimensions } from 'react-native';
 import { 
   Container, 
@@ -19,9 +20,28 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class DetailVideo extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state={
+      id: null,
+      nama: null,
+      youtube: null
+    }
+  }
+
+  componentWillMount = () => {
+    axios.get(`http://156.67.214.64/api/index.php/video?id=${this.props.navigation.state.params.id}`)
+    .then(({data}) => {
+      this.setState({
+        id: data[0].id,
+        nama: data[0].nama,
+        youtube: data[0].youtube
+      })
+    })
+    .catch(err => console.log(err))
+  }
+  
   render() {
-    
-    const htmlContent = `<img src="https://i.imgur.com/dHLmxfO.jpg?2" />`;
     
     const { goBack } = this.props.navigation;
     
@@ -39,17 +59,17 @@ export default class DetailVideo extends Component {
                 >Detail Video</Text>
             </Body>
         </Header>
-        <Content>
+        <Content style={{ backgroundColor: 'white' }}>
         <Grid>
           <Col style={{
             margin: 10,
             width: '100%'
           }}>
-          <H1>Judul Video</H1>            
+          <H1>{ this.state.nama }</H1>            
           </Col>
         </Grid>
         <Grid>          
-          <HTML html={htmlContent} imagesMaxWidth={Dimensions.get('window').width} />
+          <HTML html={`<iframe width="${ Dimensions.get('window').width }" height="315" src="${ this.state.youtube }" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`} imagesMaxWidth={Dimensions.get('window').width} />
         </Grid>
         </Content>
     </Container>
