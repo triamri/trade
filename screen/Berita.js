@@ -64,7 +64,7 @@ export default class Berita extends Component {
           <CardItem>
               <Body>
                   <H2>{ berita.judul }</H2>
-                  <HTML html={ berita.isi } />
+                  <HTML html={ (berita.isi)?berita.isi:"<p>data</p>" } />
                   <Button transparent 
                       textStyle={{color: '#87838B'}}
                       onPress= { () => navigate('DetailBerita', { id: berita.id })}

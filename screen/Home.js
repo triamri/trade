@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Image, View } from 'react-native';
+import axios from 'axios';
+import { Image, View, ImageBackground, Linking } from 'react-native';
 import {
   Drawer,
   Container,
@@ -30,6 +31,42 @@ export default class Home extends Component {
     this.drawer._root.open()
     };
 
+    constructor(props) {
+        super(props)
+        this.state = {
+          dataIkm: [],
+          dataProduk: [],
+          dataImage:[]
+        }
+      }
+    
+      componentWillMount = () => {
+        axios.get('http://156.67.214.64/api/index.php/ikm')
+        .then(({ data }) => {
+          this.setState({
+            dataIkm: data
+          })
+        })
+        .catch(err => console.log(err))
+
+        axios.get('http://156.67.214.64/api/index.php/produk')
+        .then(({ data }) => {
+          this.setState({
+            dataProduk: data
+          })
+        })
+        .catch(err => console.log(err))
+
+        axios.get('http://156.67.214.64/api/index.php/slide')
+        .then(({ data }) => {
+          this.setState({
+            dataImage: data
+          })
+        })
+        .catch(err => console.log(err))
+
+      }
+
   render() {
 
     const { navigate } = this.props.navigation;
@@ -46,7 +83,11 @@ export default class Home extends Component {
                 <Icon name='menu' />
               </Button>
             </Left>
-            <Body></Body>
+            <Body>
+            <Text 
+                  style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}
+                >Trade Itah</Text>
+            </Body>
         </Header>
         <Content style={{ backgroundColor: 'white' }} >
         <Grid style={{ alignSelf: 'center' }}>
@@ -54,11 +95,7 @@ export default class Home extends Component {
             width: '100%', 
             height: 200
         }}>
-            <ImageSlider images={[
-                'http://www.journalpolice.id/wp-content/uploads/2017/12/IMG-20171213-WA0000.jpg',
-                'https://i0.wp.com/beritakalteng.com/wp-content/uploads/2017/12/IMG-20171212-WA0006.jpg',
-                'https://i2.wp.com/gerakkalteng.com/wp-content/uploads/2018/05/IMG-20180531-WA0021.jpg'
-            ]}/>
+            <ImageSlider images={ this.state.dataImage }/>
         </Col>
         </Grid>
         <Grid style={{ marginTop: 5 }}>
@@ -85,7 +122,7 @@ export default class Home extends Component {
             </Col>
             <Col 
             style={{ margin: 5, height: 100, alignItems: 'center' }}
-            onPress = { () => navigate('Register') }
+            onPress={ ()=>{ Linking.openURL('http://156.67.214.64/trade/web/register')}}
             >
                 <Thumbnail large source={{uri: 'http://icons.iconarchive.com/icons/blackvariant/button-ui-system-folders-alt/512/Documents-icon.png'}} />
                 <Text style={{ fontSize: 10 }}>Register</Text>
@@ -95,26 +132,31 @@ export default class Home extends Component {
             IKM
         </Text>
         <CardSilder style={{ marginTop: 5 }}>
-            <View style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                IKM 1
-            </Text>
+            { this.state.dataIkm.map((ikm, index) =>
+            <View key={ index } style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
+            <ImageBackground 
+                style={{ width: '100%', height: '100%' }} 
+                source={{uri: `http://156.67.214.64/trade/ikm/${ikm.file}`}} 
+              />
+              <Grid style={{ marginTop: -100 }}>
+                  <Col style={{
+                      width: '100%',
+                      height: 170
+                      }}
+                      >
+                      <Button
+                        style={{ 
+                          alignSelf: 'center' 
+                        }} 
+                        transparent light onPress={ () => navigate('DetailIkm', { id:ikm.id }) }>
+                        <Text  
+                          style={{fontSize: 24, fontWeight: 'bold'}} 
+                        >{ ikm.ikm }</Text>
+                      </Button>
+                  </Col>
+              </Grid>
             </View>
-            <View style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'lightsalmon'}}>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                IKM 2
-            </Text>
-            </View>
-            <View style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'teal'}}>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                IKM 3
-            </Text>
-            </View>
-            <View style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'lightpink'}}>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                IKM 4
-            </Text>
-            </View>
+            )}
             </CardSilder>
         <Text style={{ marginTop: 20, marginLeft: 10 }}>
             Produk
@@ -127,26 +169,31 @@ export default class Home extends Component {
             justifyContent: 'flex-start',
             alignItems: 'center' 
             }}>
-            <View style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                Produk 1
-            </Text>
+            { this.state.dataProduk.map((produk, index) =>
+            <View key={ index } style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
+            <ImageBackground 
+                style={{ width: '100%', height: '100%' }} 
+                source={{uri: `http://156.67.214.64/trade/produk/${produk.file}`}} 
+              />
+              <Grid style={{ marginTop: -100 }}>
+                  <Col style={{
+                      width: '100%',
+                      height: 170
+                      }}
+                      >
+                      <Button
+                        style={{ 
+                          alignSelf: 'center' 
+                        }} 
+                        transparent light onPress={ () => navigate('DetailProduk', { id:produk.id }) }>
+                        <Text  
+                          style={{fontSize: 12, fontWeight: 'bold'}} 
+                        >{ produk.produk }</Text>
+                      </Button>
+                  </Col>
+              </Grid>
             </View>
-            <View style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'lightsalmon'}}>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                Produk 2
-            </Text>
-            </View>
-            <View style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'teal'}}>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                Produk 3
-            </Text>
-            </View>
-            <View style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'lightpink'}}>
-            <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-                Produk 4
-            </Text>
-            </View>
+            )}
         </Grid>            
         </Content>
     </Container>

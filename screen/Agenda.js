@@ -57,7 +57,7 @@ export default class Agenda extends Component {
         </Header>
         <Content style={{ backgroundColor: 'white' }}>
         { this.state.dataAgenda.map((agenda, index) =>
-          <Card style={{flex: 0}}>
+          <Card style={{flex: 0}} key={ index }>
             <CardItem>
                 <Body>
                 <Text 

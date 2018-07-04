@@ -12,16 +12,23 @@ import Kontak from './screen/Kontak';
 import SplashScreen from './screen/SplashScreen';
 import Berita from './screen/Berita';
 import DetailBerita from './screen/DetailBerita';
+import Informasi from './screen/Informasi';
+import DetailInformasi from './screen/DetailInformasi';
 import Agenda from './screen/Agenda';
 import DetailAgenda from './screen/DetailAgenda';
 import Video from './screen/Video';
 import DetailVideo from './screen/DetailVideo';
 import Dokumentasi from './screen/Dokumentasi';
+import DetailDokumentasi from './screen/DetailDokumentasi';
+import Pameran from './screen/Pameran';
+import DetailPameran from './screen/DetailPameran';
 
 //ikm
 import Ikm from './screen/Ikm';
 import DetailIkm from './screen/DetailIkm';
+import Kategori from './screen/Kategori';
 import Produk from './screen/Produk';
+import KategoriProduk from './screen/KategoriProduk';
 import DetailProduk from './screen/DetailProduk';
 import Register from './screen/Register';
 
@@ -50,11 +57,23 @@ const NavTrade = StackNavigator({
   DetailBerita: {
     screen: DetailBerita
   },
+  Informasi: {
+    screen: Informasi
+  },
+  DetailInformasi: {
+    screen: DetailInformasi
+  },
   Agenda: {
     screen: Agenda
   },
   DetailAgenda: {
     screen: DetailAgenda
+  },
+  Pameran: {
+    screen: Pameran
+  },
+  DetailPameran: {
+    screen: DetailPameran
   },
   Video: {
     screen: Video
@@ -68,8 +87,14 @@ const NavTrade = StackNavigator({
   DetailIkm: {
     screen: DetailIkm
   },
+  Kategori: {
+    screen: Kategori
+  },
   Produk: {
     screen: Produk
+  },
+  KategoriProduk: {
+    screen: KategoriProduk
   },
   DetailProduk: {
     screen: DetailProduk
@@ -77,12 +102,15 @@ const NavTrade = StackNavigator({
   Dokumentasi: {
     screen: Dokumentasi
   },
+  DetailDokumentasi: {
+    screen: DetailDokumentasi
+  },
   Register: {
     screen: Register
   }
 }, {
   headerMode: 'none',
-  initialRouteName: 'SplashScreen'
+  initialRouteName: 'Home'
 })
 
 export default class App extends Component {

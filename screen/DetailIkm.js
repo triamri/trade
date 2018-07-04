@@ -32,7 +32,7 @@ export default class DetailIkm extends Component {
       kontak: null,
       email: null,
       img: null,
-      desc: null
+      desc: '<p>Loading</p>'
     }
   }
 
@@ -45,7 +45,7 @@ export default class DetailIkm extends Component {
         alamat: data[0].alamat,
         kontak: data[0].kontak,
         email: data[0].email,
-        img: data[0].img,
+        img: data[0].file,
         desc: data[0].deskripsi
       })
     })
@@ -76,7 +76,7 @@ export default class DetailIkm extends Component {
             width: '100%', 
             height: 250 
           }}>
-            <Thumbnail square style={{ width: '100%', height: '100%' }} source={{uri: 'http://www.journalpolice.id/wp-content/uploads/2017/12/IMG-20171213-WA0000.jpg'}} />
+            <Thumbnail square style={{ width: '100%', height: '100%' }} source={{uri: `http://156.67.214.64/trade/ikm/${this.state.img}`}} />
           </Col>
         </Grid>
         </Content>

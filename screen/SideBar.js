@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; 
+import { Linking } from 'react-native';
 import { 
     Container, 
     Header, 
@@ -33,14 +34,15 @@ export default class ListIconExample extends Component {
             >
             <Grid>
             <Col style={{
-                paddingTop: 20,
+                paddingTop: 10,
+                paddingBottom: 10,
                 alignItems: 'center',
                 width: '100%',
-                height: 200}}
+                height: '100%'}}
             >
-                <Thumbnail 
-                    style={{ width: 150, height: 150 }} 
-                    source={{uri: 'https://2.bp.blogspot.com/-giS-lfUcwkc/WemOHkmZwBI/AAAAAAAAENg/lfbpQxbgeVchBbsw6yzY56cmALCKMkpjQCLcBGAs/s1600/kalimantan%2Btengah.png'}} 
+                <Thumbnail square small
+                    style={{ width: '50%', height: '100%' }} 
+                    source={ require('../img/logoori.png') } 
                 />
             </Col>
             </Grid>
@@ -87,6 +89,14 @@ export default class ListIconExample extends Component {
                             <Text>Berita</Text> 
                         </Body> 
                     </ListItem>
+                    <ListItem icon onPress={ () => navigate('Informasi') }> 
+                        <Left> 
+                            <Icon name="globe" /> 
+                        </Left> 
+                        <Body> 
+                            <Text>Informasi</Text> 
+                        </Body> 
+                    </ListItem>
                     <ListItem icon onPress={ () => navigate('Ikm') }> 
                         <Left> 
                             <Icon name="albums" /> 
@@ -119,15 +129,25 @@ export default class ListIconExample extends Component {
                             <Text>Dokumentasi</Text> 
                         </Body> 
                     </ListItem>
-                    <ListItem icon onPress={ () => navigate('Chatting') }> 
+                    <ListItem icon onPress={ () => navigate('Pameran') }> 
+                        <Left> 
+                            <Icon name="map" /> 
+                        </Left> 
+                        <Body> 
+                            <Text>Pameran</Text> 
+                        </Body> 
+                    </ListItem>
+                    {/* <ListItem icon onPress={ () => navigate('Chatting') }> 
                         <Left> 
                             <Icon name="chatboxes" /> 
                         </Left> 
                         <Body> 
                             <Text>Layanan Chating</Text> 
                         </Body> 
-                    </ListItem>
-                    <ListItem icon onPress={ () => navigate('Register') }> 
+                    </ListItem> */}
+                    <ListItem icon
+                        onPress={ ()=>{ Linking.openURL('http://156.67.214.64/trade/web/register')}}
+                    > 
                         <Left> 
                             <Icon name="list" /> 
                         </Left> 

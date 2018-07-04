@@ -25,7 +25,7 @@ export default class DetailProduk extends Component {
     this.state={
       id: null,
       produk: null,
-      detail: null,
+      detail: '<p>Loading</p>',
       img: null
     }
   }
@@ -37,7 +37,7 @@ export default class DetailProduk extends Component {
         id: data[0].id,
         produk: data[0].produk,
         detail: data[0].detail,
-        img: data[0].img
+        img: data[0].file
       })
     })
     .catch(err => console.log(err))
@@ -58,7 +58,7 @@ export default class DetailProduk extends Component {
             <Body>
                 <Text 
                   style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}
-                >Detail Berita</Text>
+                >Detail Produk</Text>
             </Body>
         </Header>
         <Content style={{ backgroundColor: 'white' }}>
@@ -67,7 +67,7 @@ export default class DetailProduk extends Component {
             width: '100%', 
             height: 250 
           }}>
-            <Thumbnail square style={{ width: '100%', height: '100%' }} source={{uri: 'http://www.journalpolice.id/wp-content/uploads/2017/12/IMG-20171213-WA0000.jpg'}} />
+            <Thumbnail square style={{ width: '100%', height: '100%' }} source={{uri: `http://156.67.214.64/trade/produk/${this.state.img}`}} />
           </Col>
         </Grid>
         </Content>

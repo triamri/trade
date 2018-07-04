@@ -55,10 +55,10 @@ export default class Ikm extends Component {
         </Header>
         <Content style={{ backgroundColor: 'white' }}>
         { this.state.dataIkm.map((ikm, index) =>
-          <Card>
+          <Card key={ index }>
             <CardItem>
               <Left>
-                <Thumbnail source={{uri: 'https://i.imgur.com/dHLmxfO.jpg?2'}} />
+                <Thumbnail source={{uri: `http://156.67.214.64/trade/ikm/${ikm.file}`}} />
                 <Body>
                   <Text 
                     onPress= { () => navigate('DetailIkm', { id: ikm.id })}
