@@ -102,7 +102,7 @@ export default class ListIconExample extends Component {
                             <Icon name="albums" /> 
                         </Left> 
                         <Body> 
-                            <Text>IKM</Text> 
+                            <Text>UKM Berorientasi Ekspor</Text> 
                         </Body> 
                     </ListItem>
                     <ListItem icon onPress={ () => navigate('Produk') }> 

@@ -110,7 +110,7 @@ const NavTrade = StackNavigator({
   }
 }, {
   headerMode: 'none',
-  initialRouteName: 'Home'
+  initialRouteName: 'SplashScreen'
 })
 
 export default class App extends Component {

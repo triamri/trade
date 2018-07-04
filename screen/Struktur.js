@@ -59,26 +59,23 @@ export default class Struktur extends Component {
             <Body>
                 <Text 
                   style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}
-                  >Struktur</Text>
+                  >{ this.state.nama }</Text>
             </Body>
         </Header>
         <Content style={{ backgroundColor: 'white' }}>
         <Grid>
           <Col style={{
             width: '100%', 
-            height: 250,
+            height: Dimensions.get('window').width,
             alignItems: 'center'
           }}>
             <Thumbnail square 
-              style={{ width: '70%', height: '100%' }} 
-              source={ require('../img/logodoangori.png') }
+              style={{ width: '100%', height: '100%' }} 
+              source={ {uri: `http://156.67.214.64/trade/banner/${this.state.img}`} }
             />
           </Col>
         </Grid>
         </Content>
-        <ScrollView style={{ backgroundColor: 'white', flex: 1, padding: 10 }}>
-          <HTML html={ this.state.isi } imagesMaxWidth={Dimensions.get('window').width} />
-        </ScrollView>
     </Container>
     );
   }
