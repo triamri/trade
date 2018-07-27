@@ -126,7 +126,7 @@ export default class ListIconExample extends Component {
                             <Icon name="document" /> 
                         </Left> 
                         <Body> 
-                            <Text>Dokumentasi</Text> 
+                            <Text>Galeri Kegiatan</Text> 
                         </Body> 
                     </ListItem>
                     <ListItem icon onPress={ () => navigate('Pameran') }> 
@@ -146,7 +146,7 @@ export default class ListIconExample extends Component {
                         </Body> 
                     </ListItem> */}
                     <ListItem icon
-                        onPress={ ()=>{ Linking.openURL('http://156.67.214.64/trade/web/register')}}
+                        onPress={ ()=>{ Linking.openURL('http://disdagperin.kalteng.go.id/web/register')}}
                     > 
                         <Left> 
                             <Icon name="list" /> 

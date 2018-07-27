@@ -111,7 +111,7 @@ export default class Home extends Component {
             onPress = { () => navigate('Ikm') }
             >
                 <Thumbnail large source={{uri: 'http://icons.iconarchive.com/icons/blackvariant/button-ui-system-folders-alt/512/Group-icon.png'}} />
-                <Text style={{ fontSize: 10 }}>IKM</Text>
+                <Text style={{ fontSize: 10 }}>UKM</Text>
             </Col>
             <Col 
             style={{ margin: 5, height: 100, alignItems: 'center' }}
@@ -122,14 +122,14 @@ export default class Home extends Component {
             </Col>
             <Col 
             style={{ margin: 5, height: 100, alignItems: 'center' }}
-            onPress={ ()=>{ Linking.openURL('http://156.67.214.64/trade/web/register')}}
+            onPress={ ()=>{ Linking.openURL('http://disdagperin.kalteng.go.id/web/register')}}
             >
                 <Thumbnail large source={{uri: 'http://icons.iconarchive.com/icons/blackvariant/button-ui-system-folders-alt/512/Documents-icon.png'}} />
                 <Text style={{ fontSize: 10 }}>Register</Text>
             </Col>
         </Grid>
         <Text style={{ marginTop: 20, marginLeft: 10 }}>
-            IKM
+          UKM Berorientasi Ekspor
         </Text>
         <CardSilder style={{ marginTop: 5 }}>
             { this.state.dataIkm.map((ikm, index) =>

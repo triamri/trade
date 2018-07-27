@@ -50,7 +50,7 @@ export default class Ikm extends Component {
             <Body>
                 <Text 
                   style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}
-                >Ikm</Text>
+                >UKM Berorientasi Ekspor</Text>
             </Body>
         </Header>
         <Content style={{ backgroundColor: 'white' }}>

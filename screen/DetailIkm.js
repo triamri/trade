@@ -67,7 +67,7 @@ export default class DetailIkm extends Component {
             <Body>
                 <Text 
                   style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}
-                >Detail IKM</Text>
+                >Detail UKM Berorientasi Ekspor</Text>
             </Body>
         </Header>
         <Content style={{ backgroundColor: 'white' }}>

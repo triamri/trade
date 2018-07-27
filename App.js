@@ -20,6 +20,7 @@ import Video from './screen/Video';
 import DetailVideo from './screen/DetailVideo';
 import Dokumentasi from './screen/Dokumentasi';
 import DetailDokumentasi from './screen/DetailDokumentasi';
+import DetailImage from './screen/DetailImage';
 import Pameran from './screen/Pameran';
 import DetailPameran from './screen/DetailPameran';
 
@@ -104,6 +105,9 @@ const NavTrade = StackNavigator({
   },
   DetailDokumentasi: {
     screen: DetailDokumentasi
+  },
+  DetailImage: {
+    screen: DetailImage
   },
   Register: {
     screen: Register

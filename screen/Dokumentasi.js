@@ -49,7 +49,7 @@ export default class Dokumentasi extends Component {
             <Body>
                 <Text 
                   style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}
-                >Dokumentasi</Text>
+                >Galeri Kegiatan</Text>
             </Body>
         </Header>
         <Content style={{ backgroundColor: 'white' }}>

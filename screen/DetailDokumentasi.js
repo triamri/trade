@@ -48,7 +48,7 @@ export default class DetailDokumentasi extends Component {
             <Body>
                 <Text 
                   style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}
-                >Detail Dokumentasi</Text>
+                >Detail Galeri Kegiatan</Text>
             </Body>
         </Header>
         <Content style={{ backgroundColor: 'white' }}>
@@ -61,11 +61,31 @@ export default class DetailDokumentasi extends Component {
             alignItems: 'center' 
             }}>
             { this.state.dataDokumentasi.map((dokumentasi, index) =>
-            <View key={ index } style={{margin: 5,height: 170, width: '47%', backgroundColor: 'skyblue'}}>
+            <View key={ index } 
+              style={{margin: 5,height: 170, width: '47%', backgroundColor: 'skyblue'}}
+              onPress={ () => navigate('DetailDokumentasi', { id:dokumentasi.id }) }  
+            >
               <Thumbnail square 
                 style={{ width: '100%', height: '100%' }} 
                 source={{uri: `http://156.67.214.64/trade/galeri/${dokumentasi.file}`}} 
               />
+              <Grid style={{ marginTop: -100 }}>
+                  <Col style={{
+                      width: '100%',
+                      height: 170
+                      }}
+                      >
+                      <Button
+                        style={{ 
+                          alignSelf: 'center' 
+                        }} 
+                        transparent light onPress={ () => navigate('DetailImage', { id:dokumentasi.id }) }>
+                        <Text  
+                          style={{fontSize: 24, fontWeight: 'bold'}} 
+                        >View</Text>
+                      </Button>
+                  </Col>
+              </Grid>
             </View>
             )}
         </Grid>
