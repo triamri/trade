@@ -67,7 +67,7 @@ export default class DetailDokumentasi extends Component {
             >
               <Thumbnail square 
                 style={{ width: '100%', height: '100%' }} 
-                source={{uri: `http://156.67.214.64/trade/galeri/${dokumentasi.file}`}} 
+                source={{uri: `http://156.67.214.64/galeri/${dokumentasi.file}`}} 
               />
               <Grid style={{ marginTop: -100 }}>
                   <Col style={{

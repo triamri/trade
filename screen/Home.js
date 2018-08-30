@@ -136,7 +136,7 @@ export default class Home extends Component {
             <View key={ index } style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
             <ImageBackground 
                 style={{ width: '100%', height: '100%' }} 
-                source={{uri: `http://156.67.214.64/trade/ikm/${ikm.file}`}} 
+                source={{uri: `http://156.67.214.64/ikm/${ikm.file}`}} 
               />
               <Grid style={{ marginTop: -100 }}>
                   <Col style={{
@@ -173,7 +173,7 @@ export default class Home extends Component {
             <View key={ index } style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
             <ImageBackground 
                 style={{ width: '100%', height: '100%' }} 
-                source={{uri: `http://156.67.214.64/trade/produk/${produk.file}`}} 
+                source={{uri: `http://156.67.214.64/produk/${produk.file}`}} 
               />
               <Grid style={{ marginTop: -100 }}>
                   <Col style={{

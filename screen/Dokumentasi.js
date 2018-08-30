@@ -64,7 +64,7 @@ export default class Dokumentasi extends Component {
             <View key={ index } style={{marginTop: 5,height: 170, width: '100%'}}>
               <ImageBackground 
                 style={{ width: '100%', height: '100%' }} 
-                source={{uri: `http://156.67.214.64/trade/galeri/${dokumentasi.file}`}} 
+                source={{uri: `http://156.67.214.64/galeri/${dokumentasi.file}`}} 
               />
               <Grid style={{ marginTop: -100 }}>
                   <Col style={{

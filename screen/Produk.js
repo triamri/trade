@@ -62,7 +62,7 @@ export default class Produk extends Component {
             }}>
             { this.state.dataProduk.map((kategori, index) =>
             <View key={ kategori.id } style={{margin: 5,height: 170, width: '47%', justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
-            <Thumbnail square style={{ width: '100%', height: '70%' }} source={{uri: `http://156.67.214.64/trade/kategori/${kategori.file}`}} />
+            <Thumbnail square style={{ width: '100%', height: '70%' }} source={{uri: `http://156.67.214.64/kategori/${kategori.file}`}} />
             <Text 
               style={{color: 'white', fontSize: 24, fontWeight: 'bold', marginTop: 10}}
               onPress= { () => navigate('KategoriProduk', { id:kategori.id, kategori:kategori.kategori  }) }  

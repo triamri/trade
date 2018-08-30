@@ -58,7 +58,7 @@ export default class Ikm extends Component {
           <Card key={ index }>
             <CardItem>
               <Left>
-                <Thumbnail source={{uri: `http://156.67.214.64/trade/ikm/${ikm.file}`}} />
+                <Thumbnail source={{uri: `http://156.67.214.64/ikm/${ikm.file}`}} />
                 <Body>
                   <Text 
                     onPress= { () => navigate('DetailIkm', { id: ikm.id })}

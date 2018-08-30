@@ -71,7 +71,7 @@ export default class Struktur extends Component {
           }}>
             <Thumbnail square 
               style={{ width: '100%', height: '100%' }} 
-              source={ {uri: `http://156.67.214.64/trade/banner/${this.state.img}`} }
+              source={ {uri: `http://156.67.214.64/banner/${this.state.img}`} }
             />
           </Col>
         </Grid>
