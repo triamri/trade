@@ -63,6 +63,7 @@ export default class Dokumentasi extends Component {
             { this.state.dataDokumentasi.map((dokumentasi, index) =>
             <View key={ index } style={{marginTop: 5,height: 170, width: '100%'}}>
               <ImageBackground 
+                resizeMethod="resize"
                 style={{ width: '100%', height: '100%' }} 
                 source={{uri: `http://156.67.214.64/galeri/${dokumentasi.file}`}} 
               />

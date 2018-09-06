@@ -69,7 +69,9 @@ export default class Visi extends Component {
             height: 250,
             alignItems: 'center'
           }}>
-            <Thumbnail square 
+            <Thumbnail 
+              resizeMethod="resize"
+              square 
               style={{ width: '70%', height: '100%' }} 
               source={ require('../img/logodoangori.png') }
             />

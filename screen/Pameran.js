@@ -63,6 +63,7 @@ export default class Pameran extends Component {
             { this.state.dataPameran.map((pameran, index) =>
             <View key={ index } style={{marginTop: 5,height: 170, width: '100%'}}>
               <ImageBackground 
+                resizeMethod="resize"
                 style={{ width: '100%', height: '100%' }} 
                 source={{uri: `http://156.67.214.64/pameran/${pameran.file}`}} 
               />

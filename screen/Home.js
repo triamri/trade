@@ -135,6 +135,7 @@ export default class Home extends Component {
             { this.state.dataIkm.map((ikm, index) =>
             <View key={ index } style={{height: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
             <ImageBackground 
+                resizeMethod="resize"
                 style={{ width: '100%', height: '100%' }} 
                 source={{uri: `http://156.67.214.64/ikm/${ikm.file}`}} 
               />
@@ -172,6 +173,7 @@ export default class Home extends Component {
             { this.state.dataProduk.map((produk, index) =>
             <View key={ index } style={{margin: 5,height: 170, width: 170, justifyContent:'center', alignItems:'center', backgroundColor: 'skyblue'}}>
             <ImageBackground 
+                resizeMethod="resize"
                 style={{ width: '100%', height: '100%' }} 
                 source={{uri: `http://156.67.214.64/produk/${produk.file}`}} 
               />

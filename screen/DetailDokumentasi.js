@@ -65,7 +65,9 @@ export default class DetailDokumentasi extends Component {
               style={{margin: 5,height: 170, width: '47%', backgroundColor: 'skyblue'}}
               onPress={ () => navigate('DetailDokumentasi', { id:dokumentasi.id }) }  
             >
-              <Thumbnail square 
+              <Thumbnail 
+                resizeMethod="resize"
+                square 
                 style={{ width: '100%', height: '100%' }} 
                 source={{uri: `http://156.67.214.64/galeri/${dokumentasi.file}`}} 
               />

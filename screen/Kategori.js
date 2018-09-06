@@ -44,6 +44,7 @@ export default class Kategori extends Component {
             }}>
             <View style={{marginTop: 5,height: 170, width: '100%'}}>
               <ImageBackground 
+                resizeMethod="resize"
                 style={{ width: '100%', height: '100%' }} 
                 source={{uri: 'http://www.journalpolice.id/wp-content/uploads/2017/12/IMG-20171213-WA0000.jpg'}} 
               />

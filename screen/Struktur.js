@@ -69,7 +69,9 @@ export default class Struktur extends Component {
             height: Dimensions.get('window').width,
             alignItems: 'center'
           }}>
-            <Thumbnail square 
+            <Thumbnail 
+              resizeMethod="resize"
+              square 
               style={{ width: '100%', height: '100%' }} 
               source={ {uri: `http://156.67.214.64/banner/${this.state.img}`} }
             />

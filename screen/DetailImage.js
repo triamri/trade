@@ -68,7 +68,9 @@ export default class DetailImage extends Component {
             width: '100%', 
             height: 250 
           }}>
-            <Thumbnail square 
+            <Thumbnail 
+              resizeMethod="resize"
+              square 
               style={{ width: '100%', height: '100%' }} 
               source={{ uri: `http://156.67.214.64/galeri/${ this.state.img }` }} 
             />

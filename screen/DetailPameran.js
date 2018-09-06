@@ -67,7 +67,7 @@ export default class DetailPameran extends Component {
             width: '100%', 
             height: 250 
           }}>
-            <Thumbnail square style={{ width: '100%', height: '100%' }} source={{uri: `http://156.67.214.64/pameran/${ this.state.img }`}} />
+            <Thumbnail resizeMethod="resize" square style={{ marginLeft: 20,width: '90%', height: '100%' }} source={{uri: `http://156.67.214.64/pameran/${this.state.img}`}} />
           </Col>
         </Grid>
         </Content>
